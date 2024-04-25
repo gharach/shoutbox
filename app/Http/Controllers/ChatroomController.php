@@ -22,4 +22,14 @@ class ChatroomController extends Controller
     {
         return view('chat');
     }
+
+    /**
+     * get all messages
+     *
+     * @return Message
+     */
+    public function getMessages()
+    {
+        return Message::with('user')->latest()->take(2)->get();
+    }
 }
