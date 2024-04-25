@@ -31,7 +31,9 @@ class ChatroomController extends Controller
      */
     public function getMessages()
     {
-        return Message::with('user')->oldest()->take(20)->get();
+        $messages = Message::with('user')->latest()->take(20)->get();
+        $ascendingMessages = $messages->sortBy('created_at')->values();
+        return $ascendingMessages;
     }
 
     /**
