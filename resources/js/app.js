@@ -1,5 +1,4 @@
 import { createApp, ref } from 'vue';
-import Echo from 'laravel-echo';
 import axios from 'axios';
 import ChatMessages from './components/ChatMessages.vue';
 import ChatForm from './components/ChatForm.vue';
@@ -14,7 +13,13 @@ const app = createApp({
     created() {
         this.fetchMessages();
 
-
+        window.Echo.private('chatroom')
+            .listen('MessageDelivered', (e) => {
+                this.messages.push({
+                    message: e.message.message,
+                    user: e.user
+                });
+            });
 
     },
     methods: {
