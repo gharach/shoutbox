@@ -14,13 +14,7 @@ const app = createApp({
     created() {
         this.fetchMessages();
 
-        window.Echo.private('chatroom')
-            .listen('MessageDelivered', (e) => {
-                this.messages.push({
-                    message: e.message.message,
-                    user: e.user
-                });
-        });
+
 
     },
     methods: {
@@ -33,9 +27,6 @@ const app = createApp({
             this.messages.push(message);
             var formData = new FormData();
             formData.append("message", message.message);
-            axios.post('/messages', message).then(response => {
-                console.log(response.data);
-            });
             axios.post('/messages', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
