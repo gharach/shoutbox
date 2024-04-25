@@ -31,7 +31,7 @@ class ChatroomController extends Controller
      */
     public function getMessages()
     {
-        return Message::with('user')->latest()->take(2)->get();
+        return Message::with('user')->latest()->take(20)->get();
     }
 
     /**
@@ -46,8 +46,8 @@ class ChatroomController extends Controller
         $message = $user->messages()->create([
             'message' => $request->input('message')
         ]);
-        
-        broadcast(new MessageSent($user, $message))->toOthers();
+
+        broadcast(new MessageDelivered($user, $message))->toOthers();
 
         return ['status' => 'Message Sent!'];
     }
