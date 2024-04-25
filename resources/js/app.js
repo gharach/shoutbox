@@ -10,7 +10,7 @@ const app = createApp({
     },
     created() {
         this.fetchMessages();
-        
+
     },
     methods: {
         fetchMessages() {
