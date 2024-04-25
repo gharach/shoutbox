@@ -20,7 +20,19 @@ const app = createApp({
             });
         },
         addMessage(message) {
-
+            this.messages.push(message);
+            var formData = new FormData();
+            formData.append("message", message.message);
+            axios.post('/messages', message).then(response => {
+                console.log(response.data);
+            });
+            axios.post('/messages', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(response => {
+                console.log(response.data);
+            });
         }
     }
 });
