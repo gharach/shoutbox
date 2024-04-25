@@ -9,7 +9,9 @@
             <div class="chatroom-body">
                 <chat-messages :messages="messages"></chat-messages>
             </div>
-            <div class="chatroom-footer"></div>
+            <div class="chatroom-footer">
+                <chat-form v-on:messagesent="addMessage" :user="{{ Auth::user() }}"></chat-form>
+            </div>
         </section>
     </main>
 @endsection
