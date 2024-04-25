@@ -3,13 +3,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="chatroom-container">
-        <div class="chatroom-header">shoutBox</div>
-        <div class="chatroom-body">
-        </div>
-        <div class="chatroom-footer">
-        </div>
-    </div>
-</div>
+    <main class="container">
+        <section class="chatroom">
+            <div class="chatroom-header">shoutBox</div>
+            <div class="chatroom-body">
+                <chat-messages :messages="messages"></chat-messages>
+            </div>
+            <div class="chatroom-footer"></div>
+        </section>
+    </main>
 @endsection
+
