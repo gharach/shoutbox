@@ -3,28 +3,22 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Models\Message;
+use Carbon\Carbon;
 
 class DeleteOutdatedMessages extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'app:delete-outdated-messages';
+    protected $signature = 'messages:delete-outdated';
+    protected $description = 'Delete outdated messages';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command description';
-
-    /**
-     * Execute the console command.
-     */
     public function handle()
     {
-        //
+        // Define the criteria for outdated messages (e.g., older than 7 days)
+        $cutoffDate = Carbon::now()->subDays(7);
+
+        // Delete messages older than the cutoff date
+        Message::where('created_at', '<', $cutoffDate)->delete();
+
+        $this->info('Outdated messages deleted successfully.');
     }
 }
