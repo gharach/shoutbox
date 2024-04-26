@@ -29,7 +29,7 @@ const app = createApp({
             });
         },
         addMessage(message) {
-           this.messages.push(message);
+           // this.messages.push(message);
             var formData = new FormData();
             formData.append("image", message.file);
             formData.append("message", message.message);
@@ -39,7 +39,11 @@ const app = createApp({
                     'Content-Type': 'multipart/form-data'
                 }
             }).then(response => {
-
+                this.messages.push({
+                    message: response.data.message,
+                    user: response.data.user,
+                    image: response.data.image // Add image to the new message object
+                });
             });
         }
     }

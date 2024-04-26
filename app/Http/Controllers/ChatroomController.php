@@ -67,6 +67,10 @@ class ChatroomController extends Controller
 
         broadcast(new MessageDelivered($user, $message))->toOthers();
 
-        return ['status' => 'Message Sent!'];
+        return response()->json([
+            'message' => $message->message,
+            'user' => $user,
+            'image' => $message->image, // Include image path in the response
+        ]);
     }
 }
