@@ -13,6 +13,9 @@
                 <chat-form v-on:messagesent="addMessage" :user="{{ Auth::user() }}"></chat-form>
             </div>
         </section>
+        <button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Click me
+        </button>
     </main>
 @endsection
 
