@@ -7,4 +7,4 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote')->hourly();
 
-Schedule::command(\App\Console\Commands\DeleteOutdatedMessages::class, ['Taylor', '--force'])->everyMinute();
+Schedule::command(\App\Console\Commands\DeleteOutdatedMessages::class)->everyMinute();
