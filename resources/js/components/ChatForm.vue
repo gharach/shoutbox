@@ -9,7 +9,12 @@
             v-model="newMessage"
             @keyup.enter="sendMessage"
         />
-
+        <input
+            type="file"
+            id="file"
+            class="form-control input-sm"
+            @change="onFileChange"
+        />
       <button class="btn btn-primary btn-sm" id="btn-chat" @click="sendMessage">
         Send
       </button>
@@ -31,9 +36,11 @@ export default {
             this.$emit("messagesent", {
                 user: this.user,
                 message: this.newMessage,
+                file: this.file
             });
 
             this.newMessage = "";
+            this.file = null;
         },
     }
 };

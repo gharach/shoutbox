@@ -14,7 +14,7 @@
     PUSHER_APP_SECRET=
     PUSHER_APP_CLUSTER=
    ```
-7. Initilise the database
+7. Initialize the database
     ```
     php artisan migrate
     ```
