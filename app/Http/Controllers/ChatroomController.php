@@ -50,10 +50,12 @@ class ChatroomController extends Controller
             if ($file !== null) {
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('uploads'), $filename);
+                $imagePath = 'uploads/' . $filename; // Construct the image path
             }
         }
         $message = $user->messages()->create([
-            'message' => $request->input('message')
+            'message' => $request->input('message'),
+            'image' => $imagePath ?? null,
         ]);
 
         broadcast(new MessageDelivered($user, $message))->toOthers();

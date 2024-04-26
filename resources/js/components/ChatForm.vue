@@ -42,6 +42,9 @@ export default {
             this.newMessage = "";
             this.file = null;
         },
+        onFileChange(event) {
+            this.file = event.target.files[0];
+        }
     }
 };
 </script>
