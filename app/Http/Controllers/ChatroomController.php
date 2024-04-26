@@ -6,6 +6,9 @@ use App\Events\MessageDelivered;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+
 
 class ChatroomController extends Controller
 {
@@ -50,7 +53,11 @@ class ChatroomController extends Controller
             if ($file !== null) {
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path('uploads'), $filename);
-                $imagePath = 'uploads/' . $filename; // Construct the image path
+                $manager = new ImageManager(new Driver());
+                $image = $manager->read(public_path('uploads/'). $filename);
+                $image->scale(200, 100);
+                $image->save(public_path('uploads/thumbnail/'). $filename);
+                $imagePath = 'uploads/thumbnail/' . $filename; // Construct the image path
             }
         }
         $message = $user->messages()->create([
