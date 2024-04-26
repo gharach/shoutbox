@@ -5,12 +5,14 @@ namespace App\Events;
 use App\Models\User;
 use App\Models\Message;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class MessageDelivered implements ShouldBroadcast
+class MessageDelivered implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -42,7 +44,7 @@ class MessageDelivered implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return array<int, \Illuminate\Broadcasting\Channel>
      */
     public function broadcastOn()
     {
