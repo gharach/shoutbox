@@ -5,6 +5,7 @@
             {{ message.user.name }}
 
             {{ message.message }}
+            <img v-if="message.image" :src="message.image" alt="Message Image" style="width: 400px; height: 400px;">
     </div>
 </template>
 
