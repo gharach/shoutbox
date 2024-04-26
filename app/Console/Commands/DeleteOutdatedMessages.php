@@ -13,12 +13,11 @@ class DeleteOutdatedMessages extends Command
 
     public function handle()
     {
-        // Define the criteria for outdated messages (e.g., older than 7 days)
-        $cutoffDate = Carbon::now()->subDays(7);
-
+        //$cutoffDate = Carbon::now()->subDays(1);
+        $cutoffDate = Carbon::now()->subMinutes(1);
         // Delete messages older than the cutoff date
-        Message::where('created_at', '<', $cutoffDate)->delete();
+        $deletedCount = Message::where('created_at', '<', $cutoffDate)->delete();
 
-        $this->info('Outdated messages deleted successfully.');
+        $this->info("$deletedCount outdated messages deleted successfully.");
     }
 }
