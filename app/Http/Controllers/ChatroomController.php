@@ -45,6 +45,13 @@ class ChatroomController extends Controller
     public function sendMessage(Request $request)
     {
         $user = Auth::user();
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            if ($file !== null) {
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('uploads'), $filename);
+            }
+        }
         $message = $user->messages()->create([
             'message' => $request->input('message')
         ]);
