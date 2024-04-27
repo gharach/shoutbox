@@ -6,7 +6,7 @@
     <main class="container">
         <section class="chatroom">
             <div class="chatroom-header">
-                <h1>SHoutbox Chatroom</h1>
+                <h1>Shoutbox Chatroom</h1>
                 <div class="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
                     <div class="relative flex items-center space-x-4">
                         <div class="relative">
