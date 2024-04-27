@@ -21,14 +21,22 @@
                     type="file"
                     accept="image/*"
                     id="file"
-                    class="form-control input-sm"
+                    class="hidden"
                     @change="onFileChange"
+                    ref="fileInput"
                 />
             <div class="absolute right-0 items-center inset-y-0 hidden sm:flex">
-                <button type="button" id="uploadButton" class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
+                <button
+                    type="button"
+                    id="uploadButton"
+                    class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none relative"
+                    @click="openFileUploadDialog"
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-gray-600">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
                     </svg>
+                    <!-- Add the number 1 to indicate image uploaded -->
+                    <span v-if="file" class="absolute top-0 right-0 -mt-1 -mr-1 bg-red-500 text-white rounded-full h-4 w-4 flex items-center justify-center text-xs">1</span>
                 </button>
                 <button type="button"  id="btn-chat" @click="sendMessage" class="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none">
                     <span class="font-bold">Send</span>
@@ -68,6 +76,9 @@ export default {
         },
         onFileChange(event) {
             this.file = event.target.files[0];
+        },
+        openFileUploadDialog() {
+            this.$refs.fileInput.click(); // Trigger a click event on the file input
         }
     }
 };
