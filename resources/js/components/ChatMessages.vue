@@ -10,11 +10,11 @@
                         'flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start': message.user.id !== user.id
                         }">
                     <div>
-                        <span :class="{
-                        'px-4 py-2 rounded-lg inline-block bg-blue-600 text-white': message.user.id === user.id,
-                        'px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600': message.user.id !== user.id
-                    }"> {{ message.message }}
-                        </span>
+                     <span :class="{
+    'px-4 py-2 rounded-lg inline-block bg-blue-600 text-white': message.user.id === user.id,
+    'px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600': message.user.id !== user.id
+}" v-html="makeLinksClickable(message.message)">
+                     </span>
                     </div>
                 </div>
                 <div :class="{'flex flex-col space-y-2 order-2':  message.user.id === user.id,
@@ -59,5 +59,21 @@
 
 export default {
     props: ["messages", "user"],
+    methods: {
+        makeLinksClickable(message) {
+            // Regular expression to match URLs
+            const urlRegex = /(https?:\/\/[^\s]+)|(www\.[^\s]+)/g;
+
+            // Replace URLs with clickable links
+            return message.replace(urlRegex, (match) => {
+                // Check if the matched string starts with http:// or https://
+                if (match.startsWith('http://') || match.startsWith('https://')) {
+                    return `<a href="${match}" target="_blank" style="text-decoration: underline">${match}</a>`;
+                } else { // If not, prepend http:// and create link
+                    return `<a href="http://${match}" target="_blank" style="text-decoration: underline">${match}</a>`;
+                }
+            });
+        }
+    }
 };
 </script>
