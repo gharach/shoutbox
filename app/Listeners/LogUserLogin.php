@@ -7,7 +7,7 @@ use App\Models\UserLog;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class LogUserLogin implements ShouldQueue
+class LogUserLogin
 {
     use InteractsWithQueue;
 
