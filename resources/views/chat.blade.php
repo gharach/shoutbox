@@ -6,7 +6,7 @@
     <main class="container">
         <section class="chatroom">
             <div class="chatroom-header">
-                <h1>shoutBox</h1>
+                <h1>SHoutbox Chatroom</h1>
                 <div class="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
                     <div class="relative flex items-center space-x-4">
                         <div class="relative">
@@ -15,13 +15,15 @@
                                   <circle cx="8" cy="8" r="8" fill="currentColor"></circle>
                                </svg>
                             </span>
-                            <img src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="" class="w-10 sm:w-16 h-10 sm:h-16 rounded-full">
+                            <div class="w-10 sm:w-16 h-10 sm:h-16 rounded-full" style="background-color: {{ sprintf('#%06X', mt_rand(0, 0xFFFFFF)) }}; color: #fff; display: flex; align-items: center; justify-content: center;">
+                                <span class="ont-bold">{{ ucwords(substr(Auth::user()->name, 0, 2)) }}</span>
+                            </div>
                         </div>
                         <div class="flex flex-col leading-tight">
                             <div class="text-2xl mt-1 flex items-center">
-                                <span class="text-gray-700 mr-3">Anderson Vanhron</span>
+                                <span class="text-gray-700 mr-3">{{Auth::user()->name}}</span>
                             </div>
-                            <span class="text-lg text-gray-600">Junior Developer</span>
+                            <span class="text-lg text-gray-600">a shoutbox user</span>
                         </div>
                     </div>
                 </div>
