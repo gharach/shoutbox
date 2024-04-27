@@ -55,7 +55,7 @@ class ChatroomController extends Controller
                 $file->move(public_path('uploads'), $filename);
                 $manager = new ImageManager(new Driver());
                 $image = $manager->read(public_path('uploads/'). $filename);
-                $image->scale(200, 100);
+                $image->scale(height: 400);
                 $image->save(public_path('uploads/thumbnail/'). $filename);
                 $imagePath = 'uploads/thumbnail/' . $filename; // Construct the image path
             }
