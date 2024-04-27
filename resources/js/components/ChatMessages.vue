@@ -27,7 +27,7 @@
             </div>
         </div>
         <div>
-            <img v-if="message.image" :src="message.image" alt="Message Image" style="width:100%; height: 400px;">
+            <img v-if="message.image" :src="message.image" alt="Message Image" class="max-h-400 w-1/2">
         </div>
     </div>
 </template>
