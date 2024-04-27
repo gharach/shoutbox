@@ -25,8 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user(); // Retrieve the authenticated user
-        event(new UserLoggedIn($user));
         return view('home');
     }
 }
