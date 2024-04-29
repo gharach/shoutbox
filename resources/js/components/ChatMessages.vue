@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div :class="{'flex items-end': message.user.id !== user.id, 'flex items-end justify-end': message.user.id == user.id}">
-                <img v-if="message.image" :src="message.image" alt="Message Image" class="max-h-[400px] w-1/2 my-2">
+                <img v-if="message.image" :src="message.image" alt="Message Image" class="max-h-[400px] max-w-1/2 my-2">
             </div>
         </div>
     </div>
