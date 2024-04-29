@@ -22,15 +22,17 @@ class DeleteOutdatedMessages extends Command
 
         foreach ($deletedMessages as $message) {
             // Construct the paths to the image and its thumbnail
-            $thumbnailPath = public_path($message->image);
-            $imagePath = str_replace('thumbnail/', '', $thumbnailPath);
+            if ($message->image) {
+                $thumbnailPath = public_path($message->image);
+                $imagePath = str_replace('thumbnail/', '', $thumbnailPath);
 
-            if (file_exists($imagePath)) {
-                unlink($imagePath); // Delete the original picture
-            }
+                if (file_exists($imagePath)) {
+                    unlink($imagePath); // Delete the original picture
+                }
 
-            if (file_exists($thumbnailPath)) {
-                unlink($thumbnailPath); // Delete the thumbnail
+                if (file_exists($thumbnailPath)) {
+                    unlink($thumbnailPath); // Delete the thumbnail
+                }
             }
 
             // Delete the message record from the database
