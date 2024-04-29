@@ -25,7 +25,7 @@
                     @change="onFileChange"
                     ref="fileInput"
                 />
-            <div class="absolute right-0 items-center inset-y-0 hidden sm:flex">
+            <div class="absolute right-0 items-center inset-y-0  sm:flex">
                 <button
                     type="button"
                     id="uploadButton"

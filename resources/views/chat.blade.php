@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <div id="messages"  class="chatroom-body flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
+            <div id="messages"  class="chatroom-body flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch" style="height: calc(100vh - 350px);">
                 <chat-messages :messages="messages" :user="{{ Auth::user() }}"></chat-messages>
             </div>
             <div class="chatroom-footer">
