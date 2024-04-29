@@ -12,6 +12,8 @@ use Intervention\Image\Drivers\Gd\Driver;
 
 class ChatroomController extends Controller
 {
+
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -34,7 +36,8 @@ class ChatroomController extends Controller
      */
     public function getMessages()
     {
-        $messages = Message::with('user')->latest()->take(20)->get();
+        $maxMessagesToShow = env('NEW_MESSAGES_LIMIT');
+        $messages = Message::with('user')->latest()->take($maxMessagesToShow)->get();
         $ascendingMessages = $messages->sortBy('created_at')->values();
         return $ascendingMessages;
     }

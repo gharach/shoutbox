@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Message;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
 
 class DeleteOutdatedMessages extends Command
 {
@@ -15,8 +14,8 @@ class DeleteOutdatedMessages extends Command
     public function handle()
     {
         //$cutoffDate = Carbon::now()->subDays(1);
-        $cutoffDate = Carbon::now()->subMinutes(1);
-
+        $messageExpirationDuration  = env("MESSAGE_EXPIRATION_TIME_MINUTES");
+        $cutoffDate = Carbon::now()->subMinutes($messageExpirationDuration);
         // Retrieve messages older than the cutoff date
         $deletedMessages = Message::where('created_at', '<', $cutoffDate)->get();
 
@@ -34,7 +33,6 @@ class DeleteOutdatedMessages extends Command
                     unlink($thumbnailPath); // Delete the thumbnail
                 }
             }
-
             // Delete the message record from the database
             $message->delete();
         }
