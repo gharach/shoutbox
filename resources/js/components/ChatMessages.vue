@@ -22,7 +22,7 @@
                     <div>
                         <!--                                <img src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" class="w-6 h-6 rounded-full order-1">-->
                     </div>
-                    <span>{{ message.user.name }}: </span>
+                    <span>{{ message.user.name }} </span>
                 </div>
             </div>
             <div :class="{'flex items-end': message.user.id !== user.id, 'flex items-end justify-end': message.user.id == user.id}">
