@@ -17,6 +17,7 @@ const app = createApp({
             .listen('MessageDelivered', (e) => {
                 this.messages.push({
                     message: e.message.message,
+                    image: e.message.image,
                     user: e.user
                 });
             });

@@ -36,9 +36,6 @@
             </div>
         </section>
     </main>
-    <script>
-        const el = document.getElementById('messages')
-        el.scrollTop = el.scrollHeight
-    </script
+
 @endsection
 
