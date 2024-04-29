@@ -14,7 +14,7 @@ class DeleteOutdatedMessages extends Command
     public function handle()
     {
         //$cutoffDate = Carbon::now()->subDays(1);
-        $messageExpirationDuration  = env("MESSAGE_EXPIRATION_TIME_MINUTES");
+        $messageExpirationDuration  = env("MESSAGE_EXPIRATION_TIME_MINUTES",1);
         $cutoffDate = Carbon::now()->subMinutes($messageExpirationDuration);
         // Retrieve messages older than the cutoff date
         $deletedMessages = Message::where('created_at', '<', $cutoffDate)->get();

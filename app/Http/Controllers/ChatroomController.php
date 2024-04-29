@@ -36,7 +36,7 @@ class ChatroomController extends Controller
      */
     public function getMessages()
     {
-        $maxMessagesToShow = env('NEW_MESSAGES_LIMIT');
+        $maxMessagesToShow = env('NEW_MESSAGES_LIMIT',20);
         $messages = Message::with('user')->latest()->take($maxMessagesToShow)->get();
         $ascendingMessages = $messages->sortBy('created_at')->values();
         return $ascendingMessages;
