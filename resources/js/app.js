@@ -37,7 +37,8 @@ const app = createApp({
             formData.append("user", message.user);
             axios.post('/messages', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 }
             }).then(response => {
                 this.messages.push({
