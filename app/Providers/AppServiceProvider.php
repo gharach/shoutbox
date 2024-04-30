@@ -22,9 +22,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Event::listen(
-            UserLoggedIn::class,
-            LogUserLogin::class
-        );
+//        Event::listen(
+//            UserLoggedIn::class,
+//            LogUserLogin::class
+//        );
     }
 }
